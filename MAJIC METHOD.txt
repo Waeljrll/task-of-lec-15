@@ -1,0 +1,133 @@
+Majic Methods دى تعتبر بيلت ان ميثود داخل الكلاس بنستدعيها تلقائيا اول ما تعمل ال الكلاس
+تبدأ دائمًا بـ __ (شرط أساسي)
+
+لا يتم استدعاؤها يدويًا في الغالب
+
+PHP تستدعيها عند:
+
+إنشاء object
+
+تدمير object
+
+الوصول لخاصية غير موجودة
+
+استدعاء method غير موجودة
+
+تحويل object إلى string
+
+أشهر Magic Methods
+
+1. __construct()
+
+تُنفّذ أوتوماتيك عند إنشاء object
+
+class User {
+    public function __construct() {
+        echo "Object Created";
+    }
+}
+
+$user = new User(); // تطبع: Object Created
+
+
+تُستخدم غالبًا في:
+
+تهيئة البيانات
+
+فتح اتصال Database
+
+إعداد القيم الافتراضية
+
+2. __destruct()
+
+تُنفّذ عند تدمير الـ object
+
+class User {
+    public function __destruct() {
+        echo "Object Destroyed";
+    }
+}
+
+
+تُستخدم في:
+
+إغلاق اتصال DB
+
+تنظيف الذاكرة
+
+3. __get($name)
+
+تعمل عند محاولة قراءة خاصية غير موجودة أو private
+
+class User {
+    private $name = "Ahmed";
+
+    public function __get($prop) {
+        return "Property $prop not found";
+    }
+}
+
+$user = new User();
+echo $user->age;
+
+4. __set($name, $value)
+
+تعمل عند محاولة تعديل خاصية غير موجودة أو private
+
+class User {
+    public function __set($prop, $value) {
+        echo "Cannot set $prop to $value";
+    }
+}
+
+$user->age = 25;
+
+5. __call($name, $arguments)
+
+تُنفّذ عند استدعاء method غير موجودة
+
+class User {
+    public function __call($method, $args) {
+        echo "Method $method does not exist";
+    }
+}
+
+$user->login();
+
+
+مهمة جدًا في:
+
+Frameworks
+
+Dynamic Methods
+
+Laravel-style logic
+
+6. __toString()
+
+تُنفّذ عند محاولة طباعة object كـ string
+
+class User {
+    public function __toString() {
+        return "User Object";
+    }
+}
+
+$user = new User();
+echo $user;
+
+ليه أستخدم Magic Methods؟
+
+تقليل الأخطاء
+
+كتابة كود أكثر مرونة
+
+أساس مهم لفهم:
+
+Laravel
+
+ORM
+
+MVC
+
+Framework internals
