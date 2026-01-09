@@ -1,6 +1,5 @@
 <?php 
 
-use Dom\Text;
 
 
 class Product{
@@ -43,4 +42,5 @@ echo "Final Price (including tax): $" . $product1->getFinalPrice() .
 $product2=new product("Smartphone", 500, "Samsung", "smartphone.jpg", "A latest model smartphone", 10);
 echo "Product Name: " . $product2->getName() . "</br>";
 echo "Price after 5% discount: $" . $product2->priceAfterDiscount(5) . "</br>";
+
 echo "Final Price (including tax): $" . $product2->getFinalPrice() . "</br>";
